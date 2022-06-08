@@ -2,4 +2,6 @@
 여러가지 Java 공부
 
 ## Work list
-- Java Future
+- design pattern
+  - factory method
+  - abstract factory 
