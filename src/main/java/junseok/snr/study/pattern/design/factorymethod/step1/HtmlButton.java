@@ -1,4 +1,4 @@
-package junseok.snr.study.pattern.design.factorymethod;
+package junseok.snr.study.pattern.design.factorymethod.step1;
 
 public class HtmlButton implements Button{
     @Override

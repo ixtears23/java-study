@@ -1,4 +1,4 @@
-package junseok.snr.study.pattern.design.factorymethod;
+package junseok.snr.study.pattern.design.factorymethod.step1;
 
 public interface Button {
     void render();
