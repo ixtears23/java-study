@@ -7,17 +7,15 @@ public class GetRank {
     private int[] solution(int numbers, int[] arr) {
 
         int[] answer = new int[numbers];
-        int rank = 1;
 
         for (int i = 0; i < numbers; i++) {
-
+            int rank = 1;
             for (int j = 0; j < numbers; j++) {
                 if (arr[i] < arr[j]) {
                     rank++;
                 }
             }
             answer[i] = rank;
-            rank = 1;
         }
 
         return answer;
