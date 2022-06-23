@@ -6,3 +6,8 @@
   - factory method
   - abstract factory 
   - builder
+  - prototype
+  - singleton
+  - structural
+    - adapter
+    - decorator 
