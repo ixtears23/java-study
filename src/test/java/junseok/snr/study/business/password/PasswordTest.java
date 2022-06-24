@@ -1,19 +1,36 @@
 package junseok.snr.study.business.password;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 
 class PasswordTest {
 
-    private static Password password;
+    private static PasswordStrength passwordStrength;
 
     @BeforeAll
     static void setUp() {
-        password = new Password();
+        passwordStrength = new PasswordStrength();
     }
 
     @Test
-    void nothing() {
+    @DisplayName("password 8자리 이상이면 강도 높음")
+    void lowPasswordStrengthLengthTest() {
+        final String password = "11111111";
 
+        final boolean result = passwordStrength.verifyLength(password);
+
+        assertThat(result).isTrue();
+    }
+
+    @Test
+    @DisplayName("password 길이 8자리 미만이면 강도 낮음")
+    void highPasswordStrengthLengthTest() {
+        final String password = "1111111";
+
+        final boolean result = passwordStrength.verifyLength(password);
+
+        assertThat(result).isFalse();
     }
 }
