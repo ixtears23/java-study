@@ -33,4 +33,14 @@ class PasswordTest {
 
         assertThat(result).isFalse();
     }
+
+    @Test
+    @DisplayName("password null인 경우 PasswordLengthException 발생")
+    void nullPasswordThrowPasswordLengthExceptionTest() {
+        final String password = null;
+
+        assertThatThrownBy(() -> passwordStrength.verifyLength(password))
+                .isInstanceOf(PasswordLengthException.class);
+    }
+
 }
