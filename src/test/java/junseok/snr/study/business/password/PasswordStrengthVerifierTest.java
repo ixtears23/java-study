@@ -3,6 +3,9 @@ package junseok.snr.study.business.password;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
 import static org.assertj.core.api.Assertions.*;
 
 class PasswordStrengthVerifierTest {
@@ -15,31 +18,22 @@ class PasswordStrengthVerifierTest {
     }
 
     @Test
-    @DisplayName("password 8자리 이상이면 강도 높음")
-    void lowPasswordStrengthLengthTest() {
-        final String password = "11111111";
-
-        final boolean result = passwordStrengthVerifier.verifyLength(password);
-
-        assertThat(result).isTrue();
-    }
-
-    @Test
-    @DisplayName("password 길이 8자리 미만이면 강도 낮음")
-    void highPasswordStrengthLengthTest() {
+    @DisplayName("password 길이 8자리 미만이면 PasswordLengthException 발생")
+    void throwPasswordLengthExceptionThenLessThan8DigitsTest() {
         final String password = "1111111";
 
-        final boolean result = passwordStrengthVerifier.verifyLength(password);
-
-        assertThat(result).isFalse();
+        assertThatThrownBy(() -> passwordStrengthVerifier.verifyLength(password))
+                .isInstanceOf(PasswordLengthException.class)
+                .hasMessage("패스워드는 8자리 이상이어야 합니다.");
     }
 
-    @Test
-    @DisplayName("password null인 경우 PasswordLengthException 발생")
-    void nullPasswordThrowPasswordLengthExceptionTest() {
-        final String password = null;
-
-        assertThatThrownBy(() -> passwordStrengthVerifier.verifyLength(password))
+    @ParameterizedTest(name = "password가 {arguments}인 경 PasswordLengthException 발생")
+    @CsvSource(
+            value = {"''", "null"},
+            nullValues = "null"
+    )
+    void nullPasswordThrowPasswordLengthExceptionTest(String password) {
+        assertThatThrownBy(() -> passwordStrengthVerifier.verifyBlank(password))
                 .isInstanceOf(PasswordLengthException.class);
     }
 
