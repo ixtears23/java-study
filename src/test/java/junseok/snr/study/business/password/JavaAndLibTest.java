@@ -9,14 +9,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class JavaAndLibTest {
 
     @Test
-    @DisplayName("String isEmpty 가 emptyString을 테스트하는지 확인")
+    @DisplayName("빈문자열에 대해 String.isEmpty() 는 True")
     void stringDotIsEmptyEqualsEmptyStringTest() {
         final String emptyString = "";
         assertThat(emptyString.isEmpty()).isTrue();
     }
 
     @Test
-    @DisplayName("String isEmpty 가 emptyString을 테스트하는지 확인")
+    @DisplayName("null에 대해 String.isEmpty() 는 NPE 발생")
     void throwNPEWhenStringDotIsEmptyForNull() {
         final String emptyString = null;
         assertThatThrownBy(() -> emptyString.isEmpty())
