@@ -5,13 +5,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
-class PasswordTest {
+class PasswordStrengthVerifierTest {
 
-    private static PasswordStrength passwordStrength;
+    private static PasswordStrengthVerifier passwordStrengthVerifier;
 
     @BeforeAll
     static void setUp() {
-        passwordStrength = new PasswordStrength();
+        passwordStrengthVerifier = new PasswordStrengthVerifier();
     }
 
     @Test
@@ -19,7 +19,7 @@ class PasswordTest {
     void lowPasswordStrengthLengthTest() {
         final String password = "11111111";
 
-        final boolean result = passwordStrength.verifyLength(password);
+        final boolean result = passwordStrengthVerifier.verifyLength(password);
 
         assertThat(result).isTrue();
     }
@@ -29,7 +29,7 @@ class PasswordTest {
     void highPasswordStrengthLengthTest() {
         final String password = "1111111";
 
-        final boolean result = passwordStrength.verifyLength(password);
+        final boolean result = passwordStrengthVerifier.verifyLength(password);
 
         assertThat(result).isFalse();
     }
@@ -39,7 +39,7 @@ class PasswordTest {
     void nullPasswordThrowPasswordLengthExceptionTest() {
         final String password = null;
 
-        assertThatThrownBy(() -> passwordStrength.verifyLength(password))
+        assertThatThrownBy(() -> passwordStrengthVerifier.verifyLength(password))
                 .isInstanceOf(PasswordLengthException.class);
     }
 
