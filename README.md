@@ -11,3 +11,5 @@
   - structural
     - adapter
     - decorator 
+
+- 비밀번호 강도 검증기
