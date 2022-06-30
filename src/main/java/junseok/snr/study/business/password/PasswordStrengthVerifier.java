@@ -13,15 +13,6 @@ public class PasswordStrengthVerifier {
         if (password.length() < 8) throw new PasswordLengthException("패스워드는 8자리 이상이어야 합니다.");
     }
 
-    public static void main(String[] args) {
-
-        final String str = "azAZ09";
-        for (int i = 0; i < str.length(); i++) {
-            int ascii = str.charAt(i);
-            System.out.println(ascii);
-        }
-    }
-
     public void verifyCharacter(String password) {
         int a = 0;
         int b = 0;
