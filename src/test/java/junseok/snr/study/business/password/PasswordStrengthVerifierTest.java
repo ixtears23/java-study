@@ -37,4 +37,10 @@ class PasswordStrengthVerifierTest {
                 .isInstanceOf(PasswordLengthException.class);
     }
 
+    @Test
+    @DisplayName("영문과 숫자가 포함되어 있지 않으면 Exception 발생")
+    void throwExceptionWhenNumberAndEnglishCharacterAreNotIncluded() {
+
+    }
+
 }
