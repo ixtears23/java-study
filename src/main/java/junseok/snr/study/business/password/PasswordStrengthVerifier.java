@@ -1,8 +1,5 @@
 package junseok.snr.study.business.password;
 
-import java.util.Locale;
-import java.util.stream.Stream;
-
 public class PasswordStrengthVerifier {
 
     public void verifyBlank(String password) {
@@ -20,17 +17,12 @@ public class PasswordStrengthVerifier {
         for (int i = 0; i < password.length(); i++) {
             final int c = password.charAt(i);
 
-            if (a == 0) {
-                if ((c >= 65 && c <= 90) ||
-                        (c >= 97 && c <= 122)) {
-                    a++;
-                }
+            if (isNotApplicable(a) && isEnglishLetters(c)) {
+                a++;
             }
 
-            if (b == 0) {
-                if (c >= 48 && c <= 57) {
-                    b++;
-                }
+            if (isNotApplicable(b) && isNumber(c)) {
+                b++;
             }
 
             if (a > 0 && b > 0) {
@@ -41,6 +33,19 @@ public class PasswordStrengthVerifier {
         if (a == 0 || b == 0) {
             throw new PasswordCharacterException("패스워드는 영문과 숫자를 포함해야 합니다.");
         }
+    }
+
+    private boolean isNotApplicable(int a) {
+        return a == 0;
+    }
+
+    private boolean isNumber(int character) {
+        return character >= 48 && character <= 57;
+    }
+
+    private boolean isEnglishLetters(int character) {
+        return (character >= 65 && character <= 90) ||
+                (character >= 97 && character <= 122);
     }
 
 }

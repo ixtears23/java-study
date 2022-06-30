@@ -49,7 +49,7 @@ class PasswordStrengthVerifierTest {
 
     @ParameterizedTest(name = "password {arguments}는 영문과 숫자가 포함되어 있으므로 Exception 발생하지 않음")
     @CsvSource(
-            value = {"aaaa3", "bb3bb", "3aaa", "3!@#b", "!AE#3", "Ab33", "003A", "33"}
+            value = {"aaaa3", "bb3bb", "3aaa", "3!@#b", "!AE#3", "Ab33", "003A"}
     )
     void NumberAndEnglishCharacterAreIncludedSuccessTest(String password) {
         passwordStrengthVerifier.verifyCharacter(password);
