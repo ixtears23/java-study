@@ -23,21 +23,32 @@ public class PasswordStrengthVerifier {
     }
 
     public void verifyCharacter(String password) {
-        // 영문과 숫자를 표현하는지 확인
-        // 소문자 대문자 상관없이 영문자 + 숫자 여야만 통과!!
+        int a = 0;
+        int b = 0;
 
         for (int i = 0; i < password.length(); i++) {
             final int c = password.charAt(i);
 
-            if (c >= 97 && c <= 122) {
-                final String currentCharacter = password.substring(i - 1, i);
+            if (a == 0) {
+                if ((c >= 65 && c <= 90) ||
+                        (c >= 97 && c <= 122)) {
+                    a++;
+                }
             }
 
-            if (!(c >= 65 && c <= 90) &&
-                    !(c >= 48 && c <= 57) &&
-                    !(c >= 97 && c <= 122)) {
-                throw new PasswordCharacterException("패스워드는 영문과 숫자를 포함해야 합니다.");
+            if (b == 0) {
+                if (c >= 48 && c <= 57) {
+                    b++;
+                }
             }
+
+            if (a > 0 && b > 0) {
+                break;
+            }
+        }
+
+        if (a == 0 || b == 0) {
+            throw new PasswordCharacterException("패스워드는 영문과 숫자를 포함해야 합니다.");
         }
     }
 

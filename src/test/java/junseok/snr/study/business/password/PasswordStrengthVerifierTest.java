@@ -37,12 +37,22 @@ class PasswordStrengthVerifierTest {
                 .isInstanceOf(PasswordLengthException.class);
     }
 
-    @Test
-    @DisplayName("영문과 숫자가 포함되어 있지 않으면 Exception 발생")
-    void throwExceptionWhenNumberAndEnglishCharacterAreNotIncluded() {
-        final String password = "aaaaaa";
+    @ParameterizedTest(name = "password {arguments} 는 영문과 숫자가 포함되어 있지 않으므로 Exception 발생")
+    @CsvSource(
+            value = {"aaa", "bbb", "AAA", "!@#", "!A", "33", "3%", "22", "aA", "Zz"}
+    )
+    void throwExceptionWhenNumberAndEnglishCharacterAreNotIncludedTest(String password) {
         assertThatThrownBy(() -> passwordStrengthVerifier.verifyCharacter(password))
                 .isInstanceOf(PasswordCharacterException.class);
+    }
+
+
+    @ParameterizedTest(name = "password {arguments}는 영문과 숫자가 포함되어 있으므로 Exception 발생하지 않음")
+    @CsvSource(
+            value = {"aaaa3", "bb3bb", "3aaa", "3!@#b", "!AE#3", "Ab33", "003A", "33"}
+    )
+    void NumberAndEnglishCharacterAreIncludedSuccessTest(String password) {
+        passwordStrengthVerifier.verifyCharacter(password);
     }
 
 }
