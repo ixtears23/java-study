@@ -11,9 +11,10 @@ public class RuleEngine {
     }
 
     public Result process(Expression expression) {
-        return rules.stream()
+        Rule rule = rules.stream()
                 .filter(r -> r.evaluate(expression))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("Expression does not mathes any rule"));
+        return rule.getResult();
     }
 }
