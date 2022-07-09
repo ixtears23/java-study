@@ -1,14 +1,16 @@
 package junseok.snr.study.pattern.design.factorymethod.step3;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.EnumMap;
 import java.util.Optional;
 
 public class OperatorFactory {
-    static Map<Operator, Operation> operationMap = new HashMap<>();
+    private OperatorFactory() {}
+    private static final EnumMap<Operator, Operation> operationMap = new EnumMap<>(Operator.class);
     static {
         operationMap.put(Operator.ADD, new Addition());
-        operationMap.put(Operator.DIVIDE, new Divide());
+        operationMap.put(Operator.SUB, new Subtraction());
+        operationMap.put(Operator.MUL, new Multiplication());
+        operationMap.put(Operator.DIV, new Divide());
     }
 
     public static Optional<Operation> getOperation(Operator operator) {
