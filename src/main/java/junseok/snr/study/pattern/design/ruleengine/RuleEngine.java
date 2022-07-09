@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RuleEngine {
-    private static List<Rule> rules = new ArrayList<>();
+    private static final List<Rule> rules = new ArrayList<>();
 
     static {
         rules.add(new AddRule());
@@ -14,7 +14,7 @@ public class RuleEngine {
         Rule rule = rules.stream()
                 .filter(r -> r.evaluate(expression))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Expression does not mathes any rule"));
+                .orElseThrow(() -> new IllegalArgumentException("Expression does not matches any rule"));
         return rule.getResult();
     }
 }

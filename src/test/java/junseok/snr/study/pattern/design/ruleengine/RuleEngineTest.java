@@ -9,7 +9,7 @@ class RuleEngineTest {
     @Test
     @DisplayName("Good")
     void nothing() {
-        Expression expression = new Expression(5, 5, Operator.ADD);
+        Expression expression = new Expression(5, 5, Operator.DIVIDE);
         RuleEngine engine = new RuleEngine();
         Result result = engine.process(expression);
 
