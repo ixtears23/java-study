@@ -1,4 +1,4 @@
-package junseok.snr.study.pattern.design.factorymethod.step3;
+package junseok.snr.study.pattern.design.multipleif.factoryclass;
 
 public class Subtraction implements Operation {
     @Override

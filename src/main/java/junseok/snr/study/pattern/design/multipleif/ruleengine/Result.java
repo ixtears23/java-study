@@ -1,4 +1,4 @@
-package junseok.snr.study.pattern.design.ruleengine;
+package junseok.snr.study.pattern.design.multipleif.ruleengine;
 
 public class Result {
     int value;
