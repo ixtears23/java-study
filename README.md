@@ -11,5 +11,11 @@
   - structural
     - adapter
     - decorator 
+    - proxy
 
 - 비밀번호 강도 검증기
+
+- Multiple If
+  - factory class
+  - rule engine
+  - use of enum
