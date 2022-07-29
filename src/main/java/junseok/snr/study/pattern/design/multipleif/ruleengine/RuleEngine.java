@@ -8,6 +8,9 @@ public class RuleEngine {
 
     static {
         rules.add(new AddRule());
+        rules.add(new SubtractRule());
+        rules.add(new DivideRule());
+        rules.add(new MultiplyRule());
     }
 
     public Result process(Expression expression) {
