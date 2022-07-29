@@ -47,4 +47,13 @@ class RuleEngineTest {
         assertThat(result.getValue()).isEqualTo(20);
     }
 
+    @Test
+    @DisplayName("RuleEngine 나눗셈 테스트")
+    void divideRuleTest() {
+        final Expression expression = new Expression(10, 5, Operator.DIVIDE);
+        final Result result = ruleEngine.process(expression);
+
+        assertThat(result.getValue()).isEqualTo(2);
+    }
+
 }

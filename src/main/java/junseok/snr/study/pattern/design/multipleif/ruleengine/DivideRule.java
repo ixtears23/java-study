@@ -9,7 +9,7 @@ public class DivideRule implements Rule {
         boolean evalResult = false;
         if (expression.getOperator() == Operator.DIVIDE) {
             evalResult = true;
-            result = expression.getY() / expression.getY();
+            result = expression.getX() / expression.getY();
         }
         return evalResult;
     }
