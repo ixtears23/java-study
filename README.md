@@ -13,7 +13,8 @@
     - decorator 
     - proxy
 
-- 비밀번호 강도 검증기
+- multi thread
+  - volatile
 
 - Multiple If
   - factory class
