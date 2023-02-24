@@ -11,20 +11,18 @@ public class ThreadTest {
     @SneakyThrows
     public static void main(String[] args) {
         int coreCount = Runtime.getRuntime().availableProcessors();
-        int maxThreads = coreCount * 20;
+        int maxThreads = coreCount * 2;
         int minThreads = coreCount;
 
         System.out.println(">>>>> maxThreads : " + maxThreads);
         System.out.println(">>>>> minThreads : " + minThreads);
-
-        Thread.sleep(10000);
 
         for (int currentThreadsCount = minThreads; currentThreadsCount <= maxThreads; currentThreadsCount++) {
             ExecutorService executor = Executors.newFixedThreadPool(currentThreadsCount);
             long startTime = System.currentTimeMillis();
 
             // 부하 생성
-            for (int j = 0; j < 1000; j++) {
+            for (int j = 0; j < 100; j++) {
                 executor.submit(new Task());
             }
 
@@ -43,7 +41,7 @@ public class ThreadTest {
         public void run() {
             Random random = SecureRandom.getInstanceStrong();
             int randomNumber = random.nextInt(10) + 1;
-            Thread.sleep(100);
+            Thread.sleep(5000);
 
         }
     }
