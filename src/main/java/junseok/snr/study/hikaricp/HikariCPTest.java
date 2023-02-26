@@ -35,7 +35,7 @@ public class HikariCPTest {
     }
 
     private static void process(Scanner scanner) {
-        log.info(">>>>> command : ");
+        log.info(">>>>> Process Running");
         final String command = scanner.next();
 
         connectionIfCommandConnection(command);
@@ -46,6 +46,7 @@ public class HikariCPTest {
     private static void endIfCommandEnd(String command) {
         if (command.equals(Status.END.name())) {
             status = Status.END;
+            log.info(">>>>> Process End");
         }
     }
 
@@ -64,7 +65,9 @@ public class HikariCPTest {
             CompletableFuture.supplyAsync(() -> {
                 try (final Connection con = DATA_SOURCE.getConnection();
                      final Statement statement = con.createStatement()) {
-                    statement.setQueryTimeout(5);
+                    Thread.sleep(2000);
+                    con.isValid(1);
+                    statement.setQueryTimeout(10);
                     processQuery(statement);
 
                 } catch (Exception exception) {
@@ -77,7 +80,10 @@ public class HikariCPTest {
     }
 
     private static void processQuery(Statement statement) {
-        final String sql = "SELECT * FROM users a, users b";
+        final String sql = "SELECT * FROM users a, users b\n" +
+                "WHERE a.ip_address LIKE '%1%'\n" +
+                " AND b.last_name LIKE '%a%'\n" +
+                " AND a.first_name LIKE '%a%';";
 
         try (final ResultSet resultSet = statement.executeQuery(sql)) {
             log.info(">>>>> QUERY Print ::: {}", resultSet.next());
@@ -99,15 +105,17 @@ public class HikariCPTest {
         config.addDataSourceProperty("prepStmtCacheSize", 250);
         config.addDataSourceProperty("preStmtCacheSqlLimit", 2048);
 
-        config.setMinimumIdle(1);
-        config.setMaximumPoolSize(3);
-        config.setConnectionTimeout(250);
-        config.setIdleTimeout(0);
-        config.setValidationTimeout(251);
-        config.setMaxLifetime(300000);
+        config.setMinimumIdle(5);
+        config.setMaximumPoolSize(10);
+        config.setConnectionTimeout(3000000);
+        config.setIdleTimeout(10000);
+        config.setValidationTimeout(30001);
+        config.setMaxLifetime(60000);
 
         final String connectionTestQuery = "SELECT * FROM users a, users b\n" +
-                "WHERE a.first_name LIKE 'a%'";
+                "WHERE a.ip_address LIKE '%1%'\n" +
+                " AND b.last_name LIKE '%a%'\n" +
+                " AND a.first_name LIKE '%a%' LIMIT 2500000;";
 
         config.setConnectionTestQuery(connectionTestQuery);
         return config;
