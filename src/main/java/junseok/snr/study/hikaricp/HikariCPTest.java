@@ -12,9 +12,6 @@ import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
 
 public class HikariCPTest {
-
-    public static final HikariDataSource DATA_SOURCE = createDataSource(getHikariConfig());
-
     enum Status {
         RUNNING,
         QUERY,
@@ -22,8 +19,9 @@ public class HikariCPTest {
         END
     }
 
-    private static Status status = Status.RUNNING;
     private static final Logger log = LoggerFactory.getLogger(HikariCPTest.class);
+    private static final HikariDataSource DATA_SOURCE = createDataSource(getHikariConfig());
+    private static Status status = Status.RUNNING;
 
     public static void main(String[] args) throws InterruptedException {
         final Scanner scanner = new Scanner(System.in);
@@ -34,7 +32,6 @@ public class HikariCPTest {
             process(scanner);
         }
         DATA_SOURCE.close();
-
     }
 
     private static void process(Scanner scanner) {
