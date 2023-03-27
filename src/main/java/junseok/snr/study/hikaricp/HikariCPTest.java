@@ -98,7 +98,7 @@ public class HikariCPTest {
 
     private static HikariConfig getHikariConfig() {
         final HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:mariadb://localhost:13300/test_db");
+        config.setJdbcUrl("jdbc:mariadb://localhost:13400/dev");
         config.setUsername("root");
         config.setPassword("1234");
         config.addDataSourceProperty("cachePrepStmts", "true");
@@ -112,10 +112,7 @@ public class HikariCPTest {
         config.setValidationTimeout(30001);
         config.setMaxLifetime(60000);
 
-        final String connectionTestQuery = "SELECT * FROM users a, users b\n" +
-                "WHERE a.ip_address LIKE '%1%'\n" +
-                " AND b.last_name LIKE '%a%'\n" +
-                " AND a.first_name LIKE '%a%' LIMIT 2500000;";
+        final String connectionTestQuery = "SELECT 1";
 
         config.setConnectionTestQuery(connectionTestQuery);
         return config;
