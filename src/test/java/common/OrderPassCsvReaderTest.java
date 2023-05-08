@@ -8,8 +8,6 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @Slf4j
 class OrderPassCsvReaderTest {
     private OrderPassCsvReader orderPassCsvReader;
@@ -19,11 +17,11 @@ class OrderPassCsvReaderTest {
         this.orderPassCsvReader = new OrderPassCsvReader();
     }
 
-
     @Test
-    void nothing() throws IOException {
-        final List<OrderPass> orderPass = orderPassCsvReader.toList("orderpass01.csv");
-        log.info(">>>>> orderPass : {}", orderPass);
+    void toListTest() throws IOException {
+        final List<OrderPass> orderPassList = orderPassCsvReader.toList("orderpasshistory/orderpass01.csv");
+
+        orderPassList.forEach(orderPass -> log.info(">>>>> orderPass : {}", orderPass));
     }
 
 }

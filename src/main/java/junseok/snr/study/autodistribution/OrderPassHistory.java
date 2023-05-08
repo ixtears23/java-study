@@ -1,21 +1,25 @@
 package junseok.snr.study.autodistribution;
 
-public class OrderPassHistory {
-    int seqOrderPassHistory;
-    int seqOrderInfo;
-    int seqOrderPass;
-    int price;
-    int salePrice;
-    int paymentAmount;
-    int receivables;
+import lombok.*;
 
-    public OrderPassHistory(int seqOrderPassHistory, int seqOrderInfo, int seqOrderPass, int price, int salePrice, int paymentAmount, int receivables) {
-        this.seqOrderPassHistory = seqOrderPassHistory;
-        this.seqOrderInfo = seqOrderInfo;
-        this.seqOrderPass = seqOrderPass;
-        this.price = price;
-        this.salePrice = salePrice;
-        this.paymentAmount = paymentAmount;
-        this.receivables = receivables;
-    }
+import java.time.LocalDateTime;
+
+@ToString
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class OrderPassHistory {
+    private Integer seqOrderPassHistory;
+    private int seqOrderInfo;
+    private int seqOrderPass;
+    private int price;
+    private int salePrice;
+    private int sumCardAmount;
+    private int sumCashAmount;
+    private int sumTransferAmount;
+    private int paymentAmount;
+    private int receivables;
+    private LocalDateTime paymentDatetime;
+
 }

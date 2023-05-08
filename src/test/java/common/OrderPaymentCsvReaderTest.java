@@ -19,7 +19,7 @@ class OrderPaymentCsvReaderTest {
 
     @Test
     void mapToListTest() throws IOException {
-        final List<OrderPayment> orderPaymentList = csvReader.toList("orderpayment01.csv");
+        final List<OrderPayment> orderPaymentList = csvReader.toList("orderpasshistory/orderpayment01.csv");
         for (OrderPayment orderPayment : orderPaymentList) {
             log.info(">>>>> orderPayment : {}", orderPayment);
         }

@@ -1,6 +1,5 @@
 package common;
 
-import junseok.snr.study.autodistribution.OrderPass;
 import junseok.snr.study.autodistribution.OrderPayment;
 import junseok.snr.study.autodistribution.PaymentType;
 import org.apache.commons.csv.CSVParser;

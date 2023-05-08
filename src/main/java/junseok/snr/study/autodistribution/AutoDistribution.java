@@ -1,30 +1,16 @@
 package junseok.snr.study.autodistribution;
 
+import lombok.RequiredArgsConstructor;
+
 import java.util.List;
 
+@RequiredArgsConstructor
 public class AutoDistribution {
     private final List<OrderPass> orderPassList;
     private final List<OrderPayment> orderPaymentList;
-    private final List<OrderPassHistory> orderPassHistoryList;
+    private List<OrderPassHistory> orderPassHistoryList;
 
-    public AutoDistribution(List<OrderPass> orderPassList, List<OrderPayment> orderPaymentList, List<OrderPassHistory> orderPassHistoryList) {
-        this.orderPassList = orderPassList;
-        this.orderPaymentList = orderPaymentList;
-        this.orderPassHistoryList = orderPassHistoryList;
-    }
-
+    // 자동 변환
     public void autoDistribute() {
-
-        int paymentAmount = 0;
-        int receivables = 0;
-
-
-        for (OrderPass orderPass : orderPassList) {
-
-        }
-
     }
-
-
-
 }
