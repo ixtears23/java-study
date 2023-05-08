@@ -1,0 +1,5 @@
+seqOrderInfo,seqOrderPass,price,salePrice,paymentAmount,receivables
+1,1,30000,30000,30000,0
+1,2,17000,17000,17000,0
+1,3,15000,15000,7000,8000
+1,4,24000,24000,0,24000
