@@ -2,15 +2,20 @@ package junseok.snr.study.autodistribution;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RequiredArgsConstructor
 public class AutoDistribution {
-    private final List<OrderPass> orderPassList;
-    private final List<OrderPayment> orderPaymentList;
-    private List<OrderPassHistory> orderPassHistoryList;
 
-    // 자동 변환
-    public void autoDistribute() {
+    public List<OrderPassHistory> autoDistribute(List<OrderPass> orderPassList, List<OrderPayment> orderPaymentList) {
+
+        int i = 0;
+        int j = 0;
+
+        final OrderPassHistory orderPassHistoryList = new OrderPassHistory();
+
+        return new ArrayList<>();
     }
 }
