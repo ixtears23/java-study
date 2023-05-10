@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class OrderPassHistory {
     private Integer seqOrderPassHistory;
     private int seqOrderInfo;

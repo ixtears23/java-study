@@ -45,9 +45,7 @@ class AutoDistributionTest {
     static Stream<Arguments> orderProvider() throws IOException {
         return Stream.of(
                 getArguments("01.csv")
-//                , getArguments("02.csv")
-//                , getArguments("03.csv")
-//                , getArguments("04.csv")
+                , getArguments("02.csv")
         );
     }
 
