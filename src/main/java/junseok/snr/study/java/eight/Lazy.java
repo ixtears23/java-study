@@ -8,6 +8,6 @@ public class Lazy {
         if (this.lazy == null) {
             this.lazy = new Lazy();
         }
-        return new Lazy();
+        return this.lazy;
     }
 }

@@ -17,5 +17,15 @@ public class SupplierClient {
 
         log.info(">>> toString : {}", supplierClient.stringSupplier.toString("Hi, Junseok"));
         log.info(">>> toRandom : {}", supplierClient.randomSupplier.toRandom());
+
+        final Lazy lazy = new Lazy();
+        log.info("first call - lazy : {}", lazy.getLazy());
+        log.info("second call - lazy : {}", lazy.getLazy());
+        log.info("third call - lazy : {}", lazy.getLazy());
+
+        final LazySupplier lazySupplier = new LazySupplier();
+        log.info("first call - lazySupplier : {}", lazySupplier.getLazySupplier());
+        log.info("second call - lazySupplier : {}", lazySupplier.getLazySupplier());
+        log.info("third call - lazySupplier : {}", lazySupplier.getLazySupplier());
     }
 }
