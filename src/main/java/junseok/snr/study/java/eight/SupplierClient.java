@@ -27,5 +27,10 @@ public class SupplierClient {
         log.info("first call - lazySupplier : {}", lazySupplier.getLazySupplier());
         log.info("second call - lazySupplier : {}", lazySupplier.getLazySupplier());
         log.info("third call - lazySupplier : {}", lazySupplier.getLazySupplier());
+
+        final SingletonLazySupplier singletonLazySupplier = new SingletonLazySupplier();
+        log.info("first call - lazySupplier : {}", singletonLazySupplier.getInstance());
+        log.info("second call - lazySupplier : {}", singletonLazySupplier.getInstance());
+        log.info("third call - lazySupplier : {}", singletonLazySupplier.getInstance());
     }
 }
