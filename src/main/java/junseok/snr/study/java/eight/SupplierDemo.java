@@ -5,8 +5,16 @@ import java.util.function.Supplier;
 public class SupplierDemo {
 
     public static void main(String[] args) {
-        Supplier<String> supplier = () -> "Hi, Junseok";
-
-        System.out.println(supplier.get());
+        System.out.println(toString("Hi, Junseok"));
     }
+
+    public static Supplier<String> toStringSupplier(String str) {
+        return () -> str;
+    }
+
+    public static String toString(String str) {
+        return toStringSupplier(str).get();
+    }
+
+
 }
