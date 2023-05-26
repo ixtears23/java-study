@@ -15,20 +15,25 @@ class FutureFactoryTest {
 
     @Test
     void createFutureCompletedFutureTest() throws ExecutionException, InterruptedException {
-        final CompletableFuture<String> future = futureFactory.createFutureCompletedFuture();
+        final String message = "Test";
+        final String expectedValue = "Test";
+
+        final CompletableFuture<String> future = futureFactory.createFutureCompletedFuture(message);
 
         final String actual = future.get();
-        final String expectedValue = "Test";
         assertThat(actual).isEqualTo(expectedValue);
     }
 
     @Test
     void supplyAsyncTest() throws ExecutionException, InterruptedException {
-        final CompletableFuture<String> completableFuture = futureFactory.supplyAsync();
-        final CompletableFuture<String> completableFuture2 = completableFuture.thenApply(result -> "test" + result);
+        final String message = "Test";
+        final String appendMessage = "Hi, Tom!!";
 
-        assertThat(completableFuture.get()).isEqualTo("Hi, Junseok");
-        assertThat(completableFuture2.get()).isEqualTo("testHi, Junseok");
+        final CompletableFuture<String> completableFuture = futureFactory.supplyAsync(message);
+        final CompletableFuture<String> completableFuture2 = completableFuture.thenApply(result -> result + appendMessage);
+
+        assertThat(completableFuture.get()).isEqualTo(message);
+        assertThat(completableFuture2.get()).isEqualTo(message + appendMessage);
     }
 
 }
