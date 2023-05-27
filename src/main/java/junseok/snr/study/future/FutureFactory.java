@@ -11,4 +11,9 @@ public class FutureFactory {
     public CompletableFuture<String> supplyAsync(final String message) {
         return CompletableFuture.supplyAsync(() -> message);
     }
+
+    public CompletableFuture<String> failedFuture(final Throwable throwable) {
+        return CompletableFuture.failedFuture(throwable);
+    }
+
 }

@@ -7,6 +7,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class FutureFactoryTest {
 
@@ -36,4 +37,17 @@ class FutureFactoryTest {
         assertThat(completableFuture2.get()).isEqualTo(message + appendMessage);
     }
 
+    @Test
+    void failedFutureTest() {
+        final String exceptionMessage = "CompletableFuture 실패!!!";
+        final Throwable throwable = new RuntimeException(exceptionMessage);
+        final CompletableFuture<String> completableFuture = futureFactory.failedFuture(throwable);
+
+        completableFuture.exceptionally(ex -> {
+            assertThat(ex).isEqualTo(throwable);
+            return null;
+        });
+
+
+    }
 }
