@@ -4,7 +4,9 @@ package junseok.snr.study.future;
 import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -49,5 +51,17 @@ class FutureFactoryTest {
         });
 
 
+    }
+
+    @Test
+    void runAsyncTest() throws InterruptedException {
+        final CountDownLatch countDownLatch = new CountDownLatch(1);
+
+        final String message = "Running";
+        final CompletableFuture<Void> future = futureFactory.runAsync(message);
+
+        countDownLatch.await(3, TimeUnit.SECONDS);
+
+        assertThat(future.isDone()).isTrue();
     }
 }

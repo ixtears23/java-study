@@ -16,4 +16,8 @@ public class FutureFactory {
         return CompletableFuture.failedFuture(throwable);
     }
 
+    public CompletableFuture<Void> runAsync(final String message) {
+        return CompletableFuture.runAsync(() -> System.out.println(message));
+    }
+
 }
