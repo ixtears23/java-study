@@ -68,16 +68,26 @@ class FutureFactoryTest {
 
     @Test
     void thenAcceptTest() {
-        final CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> "Complete");
+        final String threadName = "Test worker";
+        final String asyncThreadName = "ForkJoinPool.commonPool-worker-";
 
-        assertThat(completableFuture.isDone()).isFalse();
 
-        completableFuture.thenAccept(s -> {
-
-            assertThat(completableFuture.isDone()).isTrue();
-            System.out.println(s);
+        final CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> {
+            assertThat(getThreadName()).hasToString(asyncThreadName);
+            return "Complete";
         });
 
+        assertThat(completableFuture.isDone()).isFalse();
+        assertThat(getThreadName()).hasToString(threadName);
 
+        completableFuture.thenAccept(s -> {
+            assertThat(getThreadName()).hasToString(threadName);
+            assertThat(completableFuture.isDone()).isTrue();
+        });
+
+    }
+
+    private static String getThreadName() {
+        return Thread.currentThread().getName();
     }
 }
