@@ -3,6 +3,7 @@ package junseok.snr.study.future;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
@@ -63,5 +64,20 @@ class FutureFactoryTest {
         countDownLatch.await(3, TimeUnit.SECONDS);
 
         assertThat(future.isDone()).isTrue();
+    }
+
+    @Test
+    void thenAcceptTest() {
+        final CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> "Complete");
+
+        assertThat(completableFuture.isDone()).isFalse();
+
+        completableFuture.thenAccept(s -> {
+
+            assertThat(completableFuture.isDone()).isTrue();
+            System.out.println(s);
+        });
+
+
     }
 }
