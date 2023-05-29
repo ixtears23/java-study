@@ -14,6 +14,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class FutureFactoryTest {
 
+    public static final String THREAD_NAME = "Test worker";
+    public static final String ASYNC_THREAD_NAME = "ForkJoinPool.commonPool-worker-";
     private final FutureFactory futureFactory = new FutureFactory();
 
 
@@ -68,24 +70,31 @@ class FutureFactoryTest {
 
     @Test
     void thenAcceptTest() {
-        final String threadName = "Test worker";
-        final String asyncThreadName = "ForkJoinPool.commonPool-worker-";
-
 
         final CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(() -> {
-            assertThat(getThreadName()).hasToString(asyncThreadName);
+            assertThat(getThreadName()).hasToString(ASYNC_THREAD_NAME);
             return "Complete";
         });
 
         assertThat(completableFuture.isDone()).isFalse();
-        assertThat(getThreadName()).hasToString(threadName);
+        assertThat(getThreadName()).hasToString(THREAD_NAME);
 
         completableFuture.thenAccept(s -> {
-            assertThat(getThreadName()).hasToString(threadName);
+            assertThat(getThreadName()).hasToString(THREAD_NAME);
             assertThat(completableFuture.isDone()).isTrue();
         });
 
     }
+
+    @Test
+    void nothing() {
+        CompletableFuture.runAsync(() -> {
+            assertThat(getThreadName()).hasToString(ASYNC_THREAD_NAME);
+        });
+
+        assertThat(getThreadName()).isEqualTo(THREAD_NAME);
+    }
+
 
     private static String getThreadName() {
         return Thread.currentThread().getName();
