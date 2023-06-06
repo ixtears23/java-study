@@ -1,4 +1,4 @@
-package junseok.snr.study.java.eight;
+package junseok.snr.study.java.eight.supplier;
 
 import lombok.extern.slf4j.Slf4j;
 

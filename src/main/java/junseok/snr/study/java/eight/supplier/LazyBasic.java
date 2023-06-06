@@ -1,4 +1,4 @@
-package junseok.snr.study.java.eight;
+package junseok.snr.study.java.eight.supplier;
 
 public class LazyBasic {
     private static class LazyHolder {
