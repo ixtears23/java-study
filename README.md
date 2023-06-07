@@ -1,27 +1,10 @@
 # Java Study
-여러가지 Java 공부
+Java 관련된 개인 공부 Repository
 
-## Work list
-- design pattern
-  - factory method
-  - abstract factory 
-  - builder
-  - prototype
-  - singleton
-  - structural
-    - adapter
-    - decorator 
-    - proxy
+# 현재 버전
+OpenJDK20
 
-- multi thread
-  - volatile
-
-- Multiple If
-  - factory class
-  - rule engine
-  - use of enum
-
-## 커밋 메세지 규칙
+## Commit Message Rule
 - [feat]: 새로운 기능을 추가할 때
 - [fix]: 버그를 수정할 때
 - [refactor]: 코드를 재구성할 때 (기능이나 동작에는 변화가 없어야 함)
