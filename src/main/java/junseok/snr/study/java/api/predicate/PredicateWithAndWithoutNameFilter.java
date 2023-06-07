@@ -1,4 +1,4 @@
-package junseok.snr.study.java.eight.predicate;
+package junseok.snr.study.java.api.predicate;
 
 import java.util.ArrayList;
 import java.util.List;

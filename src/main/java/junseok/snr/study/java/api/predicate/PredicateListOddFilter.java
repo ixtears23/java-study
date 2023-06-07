@@ -1,4 +1,4 @@
-package junseok.snr.study.java.eight.predicate;
+package junseok.snr.study.java.api.predicate;
 
 import lombok.extern.slf4j.Slf4j;
 

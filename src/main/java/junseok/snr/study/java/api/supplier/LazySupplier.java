@@ -1,4 +1,4 @@
-package junseok.snr.study.java.eight.supplier;
+package junseok.snr.study.java.api.supplier;
 
 import java.util.function.Supplier;
 

@@ -1,4 +1,4 @@
-package junseok.snr.study.java.eight.function;
+package junseok.snr.study.java.api.function;
 
 import java.util.function.Function;
 
