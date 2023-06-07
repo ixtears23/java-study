@@ -2,6 +2,9 @@ plugins {
     id 'java'
 }
 
+sourceCompatibility = '20'
+targetCompatibility = '20'
+
 group 'org.example'
 version '1.0-SNAPSHOT'
 
@@ -11,21 +14,21 @@ repositories {
 
 dependencies {
     implementation 'joda-time:joda-time:2.10.14'
-    compileOnly 'org.projectlombok:lombok:1.18.24'
     implementation 'org.apache.commons:commons-lang3:3.0'
-    implementation 'cglib:cglib:3.3.0'
     implementation 'com.zaxxer:HikariCP:5.0.1'
     implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.2'
     implementation 'ch.qos.logback:logback-classic:1.4.5'
     implementation 'org.apache.commons:commons-csv:1.10.0'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    implementation 'net.bytebuddy:byte-buddy:1.14.5'
+    implementation 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-    testCompile("org.assertj:assertj-core:3.11.1")
-    testCompileOnly 'org.projectlombok:lombok:1.18.24'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+    testImplementation 'org.assertj:assertj-core:3.11.1'
+    testImplementation 'org.projectlombok:lombok:1.18.28'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.28'
 }
 
 test {
