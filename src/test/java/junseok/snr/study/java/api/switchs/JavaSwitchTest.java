@@ -21,16 +21,32 @@ class JavaSwitchTest {
     }
 
     @CsvSource({ "1,월", "2,화", "3,수", "4,목", "5,금", "6,토", "7,일" })
-    @ParameterizedTest
-    void previousVersionSwitchTest(int i, String expectedDayOfWeek) {
+    @ParameterizedTest(name = "(java14 이전)[{0}]을 입력받으면 [{1}]요일을 반환하는 테스트")
+    void previousVersionSwitchThenDayOfWeekTest(int i, String expectedDayOfWeek) {
+        final String dayOfWeek = javaSwitch.previousVersionSwitch(i);
+
+        assertEquals(expectedDayOfWeek, dayOfWeek);
+    }
+
+    @CsvSource({ "0,X", "-1,X", "8,X" })
+    @ParameterizedTest(name = "(java14 이전)1~7이외의 숫자 [{0}] 입력 받으면 [{1}] 문자열을 반환하는 테스트")
+    void previousVersionSwitchThenXTest(int i, String expectedDayOfWeek) {
         final String dayOfWeek = javaSwitch.previousVersionSwitch(i);
 
         assertEquals(expectedDayOfWeek, dayOfWeek);
     }
 
     @CsvSource({ "1,월", "2,화", "3,수", "4,목", "5,금", "6,토", "7,일" })
-    @ParameterizedTest
-    void java14AfterVersionSwitchTest(int i, String expectedDayOfWeek) {
+    @ParameterizedTest(name = "(java14 이후)[{0}]을 입력받으면 [{1}]요일을 반환하는 테스트")
+    void java14AfterVersionSwitchThenDayOfWeekTest(int i, String expectedDayOfWeek) {
+        final String dayOfWeek = javaSwitch.java14AfterVersionSwitch(i);
+
+        assertEquals(expectedDayOfWeek, dayOfWeek);
+    }
+
+    @CsvSource({ "0,X", "-1,X", "8,X" })
+    @ParameterizedTest(name = "(java14 이후)1~7이외의 숫자 [{0}] 입력 받으면 [{1}] 문자열을 반환하는 테스트")
+    void java14AfterVersionSwitchThenXTest(int i, String expectedDayOfWeek) {
         final String dayOfWeek = javaSwitch.java14AfterVersionSwitch(i);
 
         assertEquals(expectedDayOfWeek, dayOfWeek);
