@@ -2,8 +2,8 @@ plugins {
     id 'java'
 }
 
-sourceCompatibility = '20'
-targetCompatibility = '20'
+sourceCompatibility = "20.PREVIEW"
+targetCompatibility = "20.PREVIEW"
 
 group 'org.example'
 version '1.0-SNAPSHOT'
