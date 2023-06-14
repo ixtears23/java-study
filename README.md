@@ -4,6 +4,10 @@ Java 관련된 개인 공부 Repository
 # 현재 버전
 OpenJDK20
 
+# 실행 환경
+`junseok.snr.study.java.api.switchs.SwitchTypeMatch` 에서 preview 기능을 사용하고 있어서,  
+실행 시 preview 기능이 사용되도록 설정해야 함
+
 ## Commit Message Rule
 - [feat]: 새로운 기능을 추가할 때
 - [fix]: 버그를 수정할 때
