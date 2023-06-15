@@ -16,12 +16,12 @@ public class SwitchTypeMatch {
         return type;
     }
 
-    public String getTypeNameSwitch(Object obj) {
-        return switch (obj) {
-            case String s -> "String";
-            case Integer i -> "Integer";
-            case Long l -> "Long";
-            default -> "Else Type";
-        };
-    }
+//    public String getTypeNameSwitch(Object obj) {
+//        return switch (obj) {
+//            case String s -> "String";
+//            case Integer i -> "Integer";
+//            case Long l -> "Long";
+//            default -> "Else Type";
+//        };
+//    }
 }
