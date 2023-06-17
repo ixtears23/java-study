@@ -11,19 +11,25 @@ import java.util.concurrent.*;
 public class PerformanceLoad {
     private static final int TOTAL_TICKETS = 1_200;
     private static final int TOTAL_TRAFFIC = 1_000_000;
+    public static final int CORE_POOL_SIZE = 32;
+    public static final int MAXIMUM_POOL_SIZE = 32;
 
     public static void main(String[] args) throws Exception {
+        long startTime = System.currentTimeMillis();
 
         final LinkedBlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<>();
         final ThreadFactory threadFactory = Executors.defaultThreadFactory();
 
-        final RunningThreadPoolExecutor executor = new RunningThreadPoolExecutor(
-                100, 200, 1, TimeUnit.SECONDS, workQueue, threadFactory
+
+        final ThreadPoolExecutor executor = new ThreadPoolExecutor(
+                CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, 1, TimeUnit.SECONDS, workQueue, threadFactory
         );
+
 
         final Ticket concertTicket = Ticket.builder()
                 .id(1L)
                 .name("Concert")
+                .quantity(TOTAL_TICKETS)
                 .build();
 
         for (int i = 0; i < TOTAL_TRAFFIC; i++) {
@@ -32,15 +38,15 @@ public class PerformanceLoad {
         }
 
         executor.shutdown();
+        executor.close();
         executor.awaitTermination(Long.MAX_VALUE, TimeUnit.MILLISECONDS);
-        System.out.println("Total tickets sold : " + (TOTAL_TICKETS + concertTicket.getQuantity()));
-    }
-
-    public static class RunningThreadPoolExecutor extends ThreadPoolExecutor {
-
-        public RunningThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue, ThreadFactory threadFactory) {
-            super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, threadFactory);
-        }
+        log.info("총 티켓 : {}, 판매된 티켓 : {}, 남은 티켓 : {}",
+                TOTAL_TICKETS,
+                TOTAL_TICKETS- concertTicket.getQuantity(),
+                concertTicket.getQuantity());
+        long endTime = System.currentTimeMillis();
+        log.info("실행 시간(Millis) : {}" , endTime - startTime);
+        log.info("core_pool_size : {}, max_pool_size : {}, traffic : {}" , CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, TOTAL_TRAFFIC);
     }
 
     @RequiredArgsConstructor
@@ -50,9 +56,9 @@ public class PerformanceLoad {
         @Override
         public void run() {
             if (ticket.reserve()) {
-                log.info("Ticket reserved by " + Thread.currentThread().getName());
+                log.debug("Ticket reserved by " + Thread.currentThread().getName());
             } else {
-                log.info("Ticket sold out for " + Thread.currentThread().getName());
+                log.debug("Ticket sold out for " + Thread.currentThread().getName());
             }
         }
     }
@@ -63,7 +69,7 @@ public class PerformanceLoad {
     public static class Ticket {
         private Long id;
         private String name;
-        private int quantity = TOTAL_TICKETS;
+        private int quantity;
 
         public synchronized boolean reserve() {
             if (quantity > 0) {
