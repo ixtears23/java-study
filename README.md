@@ -5,8 +5,9 @@ Java 관련된 개인 공부 Repository
 OpenJDK20
 
 # 실행 환경
-`junseok.snr.study.java.api.switchs.SwitchTypeMatch` 에서 preview 기능을 사용하고 있어서,  
-실행 시 preview 기능이 사용되도록 설정해야 함
+~~`junseok.snr.study.java.api.switchs.SwitchTypeMatch` 에서 preview 기능을 사용하고 있어서,  
+실행 시 preview 기능이 사용되도록 설정해야 함~~  
+preview 버전 코드 주석 처리해서 preview 기능 설정하지 않아도 빌드 실패하지 않음
 
 ## Commit Message Rule
 - [feat]: 새로운 기능을 추가할 때
