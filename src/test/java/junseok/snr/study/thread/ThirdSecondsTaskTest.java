@@ -6,6 +6,10 @@ import org.junit.jupiter.api.RepeatedTest;
 
 class ThirdSecondsTaskTest {
 
+    /**
+     * 여기서 평균 3초의 기준은 다음과 같음
+     * 20번 반복해서 실행했을 때, 실행시간 -> 2500 <= X <= 3500  millis
+     */
     @RepeatedTest(10)
     void executeTest() {
         final long startTime = System.currentTimeMillis();
