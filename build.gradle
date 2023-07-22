@@ -5,8 +5,8 @@ plugins {
 sourceCompatibility = "20.PREVIEW"
 targetCompatibility = "20.PREVIEW"
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group 'junseok.snr'
+version '1.0.0-RELEASE'
 
 repositories {
     mavenCentral()
@@ -33,4 +33,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'junseok.snr.thread.ThreadPoolSize'
+    }
 }
