@@ -24,7 +24,7 @@ public class ThreadPoolSize {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        final ThreadPoolSize threadPoolSize = new ThreadPoolSize(1_000);
+        final ThreadPoolSize threadPoolSize = new ThreadPoolSize(100);
         threadPoolSize.executeTask();
     }
 
@@ -58,7 +58,7 @@ public class ThreadPoolSize {
     private Runnable getRunnable() {
         return () -> {
             try {
-                Thread.sleep(random.nextInt(3000) + 1000);
+                Thread.sleep(random.nextInt(30) + 10);  // 0.03 <-- TODO DataSet 형태로, 짧은시간 많은 쓰레드, 긴 시간 적은 쓰레드
             } catch (InterruptedException e) {
                 log.warn(">>>>> exception", e);
                 Thread.currentThread().interrupt();
