@@ -2,7 +2,7 @@ package junseok.snr.study;
 
 import org.junit.jupiter.api.Test;
 
-class DemoTest {
+class ThreadFunctionTest {
 
     @Test
     void nothing() {
