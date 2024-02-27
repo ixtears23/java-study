@@ -3,10 +3,12 @@ package junseok.snr.study.thread;
 import java.math.BigInteger;
 
 public class LongComputationThread {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         final Thread thread = new Thread(new LongComputationTask(new BigInteger("2000000"), new BigInteger("10000000")));
+        thread.setDaemon(true);
 
         thread.start();
+        Thread.sleep(100);
         thread.interrupt();
 
     }
@@ -29,10 +31,6 @@ public class LongComputationThread {
             BigInteger result = BigInteger.ONE;
 
             for (BigInteger i = BigInteger.ZERO; i.compareTo(power) != 0; i = i.add(BigInteger.ONE)) {
-                if (Thread.currentThread().isInterrupted()) {
-                    System.out.println("Prematurely interrupted computation");
-                    return BigInteger.ZERO;
-                }
                 result = result.multiply(base);
             }
 
