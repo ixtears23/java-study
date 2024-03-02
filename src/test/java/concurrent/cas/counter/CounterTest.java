@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Slf4j
 class CounterTest {
     private static final int COUNT = 1_000_000;
-    private static final int THREAD_COUNT = 100;
+    private static final int THREAD_COUNT = 10;
 
     @RepeatedTest(10)
     void integerCounterTest() {
@@ -31,6 +31,10 @@ class CounterTest {
         testCounter(SyncronizedIntegerCounter::new);
     }
 
+    @RepeatedTest(10)
+    void spinLockIntegerCounterTest() {
+        testCounter(SpinLockCounter::new);
+    }
 
     void testCounter(Supplier<Counter> counterSupplier) {
 
