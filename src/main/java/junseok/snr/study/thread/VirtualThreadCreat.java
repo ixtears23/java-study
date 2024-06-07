@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 import java.util.stream.IntStream;
 
 public class VirtualThreadCreat {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         Runnable runnable = () -> {
             int i = 0;
@@ -49,8 +49,9 @@ public class VirtualThreadCreat {
         final Thread vts3 = Thread.ofVirtual().name("VTS2", 3000L).start(runnable);
 
 
+        final Thread thread = Thread.startVirtualThread(runnable);
 
-        Thread.startVirtualThread(runnable);
+        thread.join();
 
         try (final ExecutorService executorService = Executors.newVirtualThreadPerTaskExecutor()) {
             IntStream.range(0, 1000)
