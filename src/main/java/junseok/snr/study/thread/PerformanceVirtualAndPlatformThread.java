@@ -3,7 +3,7 @@ package junseok.snr.study.thread;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class VirtualThreadCreate {
+public class PerformanceVirtualAndPlatformThread {
 
     public static void main(String[] args) {
         final int threadCount = 100000;
@@ -12,7 +12,7 @@ public class VirtualThreadCreate {
         final long startTImeMillis = System.currentTimeMillis();
         final List<Thread> platformThreadList = stream1.mapToObj(i ->
                         Thread.ofVirtual()
-                                .unstarted(VirtualThreadCreate::extracted))
+                                .unstarted(PerformanceVirtualAndPlatformThread::extracted))
                 .toList();
 
         platformThreadList.forEach(Thread::start);
@@ -25,7 +25,7 @@ public class VirtualThreadCreate {
         final long startTImeMillis2 = System.currentTimeMillis();
         final List<Thread> virtualThreadList = stream2.mapToObj(i ->
                         Thread.ofPlatform()
-                                .unstarted(VirtualThreadCreate::extracted))
+                                .unstarted(PerformanceVirtualAndPlatformThread::extracted))
                 .toList();
 
         virtualThreadList.forEach(Thread::start);
