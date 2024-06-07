@@ -1,4 +1,4 @@
-package junseok.snr.study.thread;
+package junseok.snr.study.thread.virtual;
 
 import java.util.concurrent.CompletableFuture;
 
