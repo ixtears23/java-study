@@ -8,17 +8,12 @@ public class NestedClass {
 
 
     public class InnerPublicClass {
-        public int publicVar;
-        protected int protectedVar;
-        private int privateVar;
-        int defaultVar;
 
         public void nothing() {
-
-            int publicVar = new NestedClass().publicVar;
-            int protectedVar = new NestedClass().protectedVar;
-            int privateVar = new NestedClass().privateVar;
-            int defaultVar = new NestedClass().defaultVar;
+            System.out.println(publicVar);
+            System.out.println(protectedVar);
+            System.out.println(privateVar);
+            System.out.println(defaultVar);
 
         }
     }
@@ -31,10 +26,14 @@ public class NestedClass {
 
         public void nothing() {
 
-            int publicVar = new NestedClass().publicVar;
-            int protectedVar = new NestedClass().protectedVar;
-            int privateVar = new NestedClass().privateVar;
-            int defaultVar = new NestedClass().defaultVar;
+            int instancePublicVar = new NestedClass().publicVar;
+            int instanceProtectedVar = new NestedClass().protectedVar;
+            int instancePrivateVar = new NestedClass().privateVar;
+            int instanceDefaultVar = new NestedClass().defaultVar;
+            System.out.println(publicVar);
+            System.out.println(protectedVar);
+            System.out.println(privateVar);
+            System.out.println(defaultVar);
 
         }
     }
@@ -46,11 +45,10 @@ public class NestedClass {
         int defaultVar;
 
         public void nothing() {
-
-            int publicVar = new NestedClass().publicVar;
-            int protectedVar = new NestedClass().protectedVar;
-            int privateVar = new NestedClass().privateVar;
-            int defaultVar = new NestedClass().defaultVar;
+            System.out.println(publicVar);
+            System.out.println(protectedVar);
+            System.out.println(privateVar);
+            System.out.println(defaultVar);
 
         }
     }
@@ -63,11 +61,10 @@ public class NestedClass {
 
         public void nothing() {
 
-            int publicVar = new NestedClass().publicVar;
-            int protectedVar = new NestedClass().protectedVar;
-            int privateVar = new NestedClass().privateVar;
-            int defaultVar = new NestedClass().defaultVar;
-
+            System.out.println(publicVar);
+            System.out.println(protectedVar);
+            System.out.println(privateVar);
+            System.out.println(defaultVar);
         }
     }
 
@@ -80,6 +77,13 @@ public class NestedClass {
 
     protected static class StaticInnerProtectedClass {
 
+        public static void main(String[] args) {
+            NestedClass nestedClass = new NestedClass();
+            System.out.println(nestedClass.publicVar);
+            System.out.println(nestedClass.protectedVar);
+            System.out.println(nestedClass.privateVar);
+            System.out.println(nestedClass.defaultVar);
+        }
     }
 
     private static class StaticInnerPrivateClass {}

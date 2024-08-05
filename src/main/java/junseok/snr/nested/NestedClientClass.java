@@ -8,11 +8,13 @@ public class NestedClientClass {
         NestedClass.InnerProtectedClass innerProtectedClass = new NestedClass().new InnerProtectedClass();
         NestedClass.InnerDefaultClass innerDefaultClass = new NestedClass().new InnerDefaultClass();
 
-        innerPublicClass.defaultVar = 0;
 
         NestedClass.StaticInnerPublicClass staticInnerPublicClass = new NestedClass.StaticInnerPublicClass();
         NestedClass.StaticInnerProtectedClass staticInnerProtectedClass = new NestedClass.StaticInnerProtectedClass();
         NestedClass.StaticInnerDefaultClass staticInnerDefaultClass = new NestedClass.StaticInnerDefaultClass();
+
+        new NestedClass.StaticInnerPublicClass();
+
         // private static 클래스는 사용할 수 없음.
 
         staticInnerPublicClass.defaultVar = 0;
