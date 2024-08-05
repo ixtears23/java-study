@@ -7,7 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 @Getter
 @ToString
-public class ReentrantLockCounter {
+public class ReentrantLockCounter implements Counter {
     private final ReentrantLock lock = new ReentrantLock();
     private int count;
     private final int minCount;

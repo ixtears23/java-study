@@ -16,7 +16,7 @@ class SyncCounterTest {
 
     @BeforeEach
     void setUp() {
-        counter = new Counter(0, 10_000);
+        counter = new SyncCounter(0, 10_000);
     }
 
     @DisplayName("멀티 쓰레드에서 카운터 10,000 증가 시 10,000 보다 작게 카운트가 증가되는 테스트")

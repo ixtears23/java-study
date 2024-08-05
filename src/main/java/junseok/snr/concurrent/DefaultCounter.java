@@ -3,23 +3,23 @@ package junseok.snr.concurrent;
 import lombok.Getter;
 
 @Getter
-public class SyncCounter implements Counter {
-    private int count = 0;
+public class DefaultCounter implements Counter {
+    private int count;
     private final int minCount;
     private final int maxCount;
 
-    public SyncCounter(int minCount, int maxCount) {
+    public DefaultCounter(int minCount, int maxCount) {
         this.minCount = minCount;
         this.maxCount = maxCount;
     }
 
-    public synchronized void increment() {
+    public void increment() {
         if (maxCount >= count) {
             count++;
         }
     }
 
-    public synchronized void decrement() {
+    public void decrement() {
         if (minCount <= count) {
             count--;
         }
