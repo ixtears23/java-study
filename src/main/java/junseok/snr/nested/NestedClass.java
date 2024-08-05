@@ -8,6 +8,10 @@ public class NestedClass {
 
 
     public class InnerPublicClass {
+        public int publicVar;
+        protected int protectedVar;
+        private int privateVar;
+        int defaultVar;
 
         public void nothing() {
 
@@ -20,6 +24,11 @@ public class NestedClass {
     }
 
     protected class InnerProtectedClass {
+        public int publicVar;
+        protected int protectedVar;
+        private int privateVar;
+        int defaultVar;
+
         public void nothing() {
 
             int publicVar = new NestedClass().publicVar;
@@ -31,6 +40,11 @@ public class NestedClass {
     }
 
     class InnerDefaultClass {
+        public int publicVar;
+        protected int protectedVar;
+        private int privateVar;
+        int defaultVar;
+
         public void nothing() {
 
             int publicVar = new NestedClass().publicVar;
@@ -42,6 +56,11 @@ public class NestedClass {
     }
 
     private class InnerPrivateClass {
+        public int publicVar;
+        protected int protectedVar;
+        private int privateVar;
+        int defaultVar;
+
         public void nothing() {
 
             int publicVar = new NestedClass().publicVar;
@@ -53,7 +72,10 @@ public class NestedClass {
     }
 
     public static class StaticInnerPublicClass {
-
+        public int publicVar;
+        protected int protectedVar;
+        private int privateVar;
+        int defaultVar;
     }
 
     protected static class StaticInnerProtectedClass {
