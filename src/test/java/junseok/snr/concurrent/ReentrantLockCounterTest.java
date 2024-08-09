@@ -1,6 +1,5 @@
 package junseok.snr.concurrent;
 
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -11,12 +10,12 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-class SyncCounterTest {
+class ReentrantLockCounterTest {
     private Counter counter;
 
     @BeforeEach
     void setUp() {
-        counter = new SyncCounter(0, 10_000);
+        counter = new ReentrantLockCounter(0, 10_000);
     }
 
     @DisplayName("멀티 쓰레드에서 카운터 10,000 증가 시 10,000 이 정확히 카운트 되는 테스트")
